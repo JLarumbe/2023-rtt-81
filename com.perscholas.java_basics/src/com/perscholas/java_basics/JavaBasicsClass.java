@@ -35,16 +35,16 @@ public class JavaBasicsClass {
 
 		// ----------------------------------
 		double o = 4.5, n = 3.5;
-		
-		double div2 = o/n;
-		
-		System.out.println("5)Result: " + (int)div2);
-		
+
+		double div2 = o / n;
+
+		System.out.println("5)Result: " + (int) div2);
+
 		// ----------------------------------
-		
+
 		int s = 5, t = 6;
 		int q = t / s;
-		
+
 		System.out.println();
 	}
 }
