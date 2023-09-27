@@ -2,19 +2,18 @@ package tests;
 
 public class examples {
 	public static void main(String[] args) {
-		String[] stringArray = new String[10];
-		int c = 0;
+		String x = "abcxyz";
 		
-		stringArray[0] = "t";
-		stringArray[1] = "t";
-		stringArray[2] = "t";
+		String y =  x.toUpperCase();
 		
-		for(int i = 0; i < stringArray.length; i++) {
-			if(stringArray[i] == null) {
-				c = i;
-			}
-		}
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("abc");
+		buffer.append("xyz");
 		
-		System.out.println(c);
+		String sub = buffer.substring(0, 3);
+		
+		buffer.insert(3, "123");
+		
+		System.out.println(buffer.toString());
 	}
 }

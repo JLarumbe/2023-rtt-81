@@ -17,16 +17,8 @@ public class StringAssignment {
 
 		// do the same thing to find the substring of the first and last vowel of the
 		// string
-		int firstVowel = -1;
-		String vowels = "aeiou";
-
-		for (int i = 0; i < example.length(); i++) {
-			if(vowels.indexOf(example.charAt(i)) != -1) {
-				firstVowel = i;
-			}
-		}
 		
-		System.out.println("First Vowel: " + firstVowel);
+		
 		// use the string.charAt function and use a for loop to loop over the entire
 		// string
 		// and print out each character with a new line after it.
