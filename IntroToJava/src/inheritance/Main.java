@@ -15,13 +15,23 @@ public class Main {
 
 		cir.setName("Circle");
 		cir.setDiameter(100);
-		
+
+		Triangle tri = new Triangle();
+
+		tri.setName("Triangle");
+		tri.setSideA(3);
+		tri.setSideB(5);
+		tri.setSideC(8);
+		tri.setBase(6);
+		tri.setHeight(2);
+
 		List<Shape> shapes = new ArrayList<>();
-		
+
 		shapes.add(rect);
 		shapes.add(cir);
-		
-		for(Shape shape: shapes) {
+		shapes.add(tri);
+
+		for (Shape shape : shapes) {
 			System.out.println(shape.getName());
 		}
 	}

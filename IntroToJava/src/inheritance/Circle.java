@@ -10,7 +10,7 @@ public class Circle extends Shape {
 	public void setDiameter(double diameter) {
 		this.diameter = diameter;
 	}
-	
+
 	public double getRadius() {
 		return diameter / 2;
 	}
@@ -18,5 +18,10 @@ public class Circle extends Shape {
 	@Override
 	public double calculateArea() {
 		return 3.14159 * getRadius() * getRadius();
+	}
+
+	@Override
+	public double calculatePerimeter() {
+		return 2 * 3.14159 * getRadius();
 	}
 }

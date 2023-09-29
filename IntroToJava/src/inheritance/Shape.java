@@ -1,6 +1,6 @@
 package inheritance;
 
-public abstract class Shape implements Area{
+public abstract class Shape implements Area, Perimeter {
 	private String name;
 
 	public String getName() {
