@@ -57,7 +57,7 @@ public class Calculator {
 		Scanner sc = new Scanner(System.in);
 
 		Calculator c = new Calculator();
-
+		
 		c.userInput(sc);
 
 		c.result(c.op);

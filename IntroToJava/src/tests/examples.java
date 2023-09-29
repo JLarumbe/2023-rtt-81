@@ -1,19 +1,29 @@
 package tests;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class examples {
 	public static void main(String[] args) {
-		String x = "abcxyz";
+		int[] arr = { 3,2,4 };
+
+		int target = 6;
 		
-		String y =  x.toUpperCase();
+		System.out.println(Arrays.toString(twoSum(arr, target)));
+	}
+
+	public static int[] twoSum(int[] nums, int target) {
+		Map<Integer, Integer> map = new HashMap<>();
 		
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("abc");
-		buffer.append("xyz");
-		
-		String sub = buffer.substring(0, 3);
-		
-		buffer.insert(3, "123");
-		
-		System.out.println(buffer.toString());
+		for(int i = 0; i < nums.length; i++) {
+			if(map.containsKey(target - nums[i])) {
+				return new int[] {i , map.get(target - nums[i])};
+			} 
+			
+			map.put(nums[i], i);
+		}
+
+		return new int[0];
 	}
 }
