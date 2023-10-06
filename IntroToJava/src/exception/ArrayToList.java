@@ -42,7 +42,7 @@ public class ArrayToList implements MyList {
 		String[] arr = { "This", "class", "is", "boring" };
 
 		System.out.println("=======================Convert Function=======================");
-		
+
 		System.out.println("Array: " + Arrays.toString(arr));
 
 		obj.convert(arr);
@@ -52,7 +52,7 @@ public class ArrayToList implements MyList {
 		System.out.println("=======================Replace Function=======================");
 
 		obj.replace(0);
-		
+
 		obj.replace(2);
 
 		System.out.println(obj.arrayToList);
