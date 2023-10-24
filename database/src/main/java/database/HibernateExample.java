@@ -33,19 +33,19 @@ public class HibernateExample {
 //
 //		System.out.println(order.getId() + " | " + order.getRequiredDate());
 
-		CustomerDAO customerDao = new CustomerDAO();
-		
-		List<Customer> customers = customerDao.findByFirstName("Leslie");
-		
-		for(Customer c: customers) {
-			System.out.println(c.getId() + " | " + c.getContactFirstName() + " | " + c.getContactLastName());
-		}
+//		CustomerDAO customerDao = new CustomerDAO();
+//		
+//		List<Customer> customers = customerDao.findByFirstName("Leslie");
+//		
+//		for(Customer c: customers) {
+//			System.out.println(c.getId() + " | " + c.getContactFirstName() + " | " + c.getContactLastName());
+//		}
 
-//		OrderDetailDAO orderDetailDao = new OrderDetailDAO();
-//
-//		OrderDetail orderDetail = orderDetailDao.findById(87);
-//
-//		System.out.println(orderDetail.getId() + " | " + orderDetail.getOrderLineNumber());
+		OrderDetailDAO orderDetailDao = new OrderDetailDAO();
+
+		OrderDetail orderDetail = orderDetailDao.findById(87);
+
+		System.out.println(orderDetail.getId() + " | " + orderDetail.getOrderLineNumber());
 	}
 
 }

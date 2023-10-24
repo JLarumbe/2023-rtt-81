@@ -1,5 +1,7 @@
 package database;
 
+import java.util.List;
+
 import database.dao.CustomerDAO;
 import database.entity.Customer;
 
@@ -28,15 +30,25 @@ public class CreateAndUpdateExample {
 	public void updateCustomerExample() {
 		Customer c = customerDao.findById(524);
 		
-		c.setContactFirstName("Updated First Name");
-		c.setContactLastName("Updated Last Name");
-		
-		customerDao.save(c);
+		if(c != null) {
+			c.setContactFirstName("Larry");
+			c.setContactLastName("Bob");
+			
+			customerDao.save(c);
+		} else {
+			System.out.println("Customer does not exist!");
+		}
+	}
+	
+	public void listQuery() {
+		List<Customer> customers = customerDao.findByFirstName("Larry");
+		System.out.println("We found " + customers.size() + " records in the database");
 	}
 
 	public static void main(String[] args) {
 		CreateAndUpdateExample caue = new CreateAndUpdateExample();
 //		caue.insertCustomerExample();
-		caue.updateCustomerExample();
+//		caue.updateCustomerExample();
+		caue.listQuery();
 	}
 }
