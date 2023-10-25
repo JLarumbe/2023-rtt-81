@@ -34,7 +34,7 @@ public class OrderDAO {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 
-		String hql = "FROM Order o WHERE o.customerId = :customerId";
+		String hql = "FROM Order o WHERE o.customer.id = :customerId";
 
 		TypedQuery<Order> query = session.createQuery(hql, Order.class);
 		query.setParameter("customerId", customerId);

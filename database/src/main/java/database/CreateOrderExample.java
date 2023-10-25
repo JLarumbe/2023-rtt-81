@@ -11,7 +11,7 @@ import database.dao.OrderDAO;
 import database.entity.Customer;
 import database.entity.Order;
 
-public class ClassAssignment {
+public class CreateOrderExample {
 	OrderDAO orderDao = new OrderDAO();
 	CustomerDAO customerDAO = new CustomerDAO();
 
@@ -20,20 +20,20 @@ public class ClassAssignment {
 
 		if (customer != null) {
 			System.out.println("Customer found!");
-			createOrder(id);
+			createOrder(customer);
 		} else {
 			System.out.println("Customer not found!");
 		}
 	}
 
-	public void createOrder(int customerId) throws ParseException {
+	public void createOrder(Customer customer) throws ParseException {
 		Order order = new Order();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date requiredDate = sdf.parse("2023-10-31");
 		Date shippedDate = sdf.parse("2023-10-29");
 
-		order.setCustomerId(customerId);
+		order.setCustomer(customer);
 		order.setOrderDate(new Date());
 		order.setRequiredDate(requiredDate);
 		order.setShippedDate(shippedDate);
@@ -64,7 +64,7 @@ public class ClassAssignment {
 //		System.out.print("Enter customer ID: ");
 //		Integer customerID = sc.nextInt();
 
-		ClassAssignment ca = new ClassAssignment();
+		CreateOrderExample ca = new CreateOrderExample();
 
 //		ca.queryCustomer(customerID);
 

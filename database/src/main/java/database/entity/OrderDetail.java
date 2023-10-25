@@ -22,11 +22,15 @@ public class OrderDetail {
 	@JoinColumn(name = "order_id", nullable = false)
 	private Order order;
 
-	@Column(name = "order_id", insertable = false, updatable = false)
-	private Integer orderId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "product_id", nullable = false)
+	private Product product;
 
-	@Column(name = "product_id", insertable = false, updatable = false)
-	private Integer productId;
+//	@Column(name = "order_id", insertable = false, updatable = false)
+//	private Integer orderId;
+//
+//	@Column(name = "product_id", insertable = false, updatable = false)
+//	private Integer productId;
 
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
@@ -45,21 +49,21 @@ public class OrderDetail {
 		this.id = id;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
-
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
+//	public Integer getOrderId() {
+//		return orderId;
+//	}
+//
+//	public void setOrderId(Integer orderId) {
+//		this.orderId = orderId;
+//	}
+//
+//	public Integer getProductId() {
+//		return productId;
+//	}
+//
+//	public void setProductId(Integer productId) {
+//		this.productId = productId;
+//	}
 
 	public Integer getQuantityOrdered() {
 		return quantityOrdered;
@@ -91,6 +95,14 @@ public class OrderDetail {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

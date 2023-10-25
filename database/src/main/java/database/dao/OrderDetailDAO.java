@@ -1,5 +1,6 @@
 package database.dao;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -13,13 +14,18 @@ public class OrderDetailDAO {
 	public OrderDetail findById(int id) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
+		
 		String hql = "FROM OrderDetail od WHERE od.id = :id";
+		
 		TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
 		query.setParameter("id", id);
 
-		OrderDetail result = query.getSingleResult();
-
-		return result;
+		try {
+			OrderDetail result = query.getSingleResult();
+			return result;
+		} catch (NoResultException nre) {
+			return null;
+		}
 	}
 
 	public void save(OrderDetail save) {

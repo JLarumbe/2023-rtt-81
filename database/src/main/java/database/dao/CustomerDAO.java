@@ -9,13 +9,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
 import database.entity.Customer;
 
 public class CustomerDAO {
 	public Customer findById(int id) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
-		String hql = "FROM Customer c WHERE c.id = :id"; // Example of HQL to get all records of user class
+		
+		String hql = "FROM Customer c WHERE c.id = :id";
+		
 		TypedQuery<Customer> query = session.createQuery(hql, Customer.class);
 		query.setParameter("id", id);
 
