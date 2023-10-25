@@ -1,7 +1,9 @@
 package database.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +29,9 @@ public class Order {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
+
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<OrderDetail> orderdetail;
 
 	@Column(name = "customer_id", insertable = false, updatable = false)
 	private Integer customerId;
@@ -110,6 +116,14 @@ public class Order {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public List<OrderDetail> getOrderdetail() {
+		return orderdetail;
+	}
+
+	public void setOrderdetail(List<OrderDetail> orderdetail) {
+		this.orderdetail = orderdetail;
 	}
 
 }

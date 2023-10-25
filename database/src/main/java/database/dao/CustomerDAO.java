@@ -28,17 +28,14 @@ public class CustomerDAO {
 
 	}
 
-	public List<Customer> findByFirstName(String fname) {
+	public List<Customer> findByFirstName(String firstName) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 
-		// Example of HQL to get all records of user class
-		// SQL is : select * from customers c where c.contact_firstname = :firstname and
-		// c.contact_lastname = :lastname
-		String hql = "FROM Customer c WHERE c.contactFirstName = :firstname";
+		String hql = "FROM Customer c WHERE c.contactFirstName = :firstName";
 
 		TypedQuery<Customer> query = session.createQuery(hql, Customer.class);
-		query.setParameter("firstname", fname);
+		query.setParameter("firstName", firstName);
 
 		List<Customer> result = query.getResultList();
 		return result;

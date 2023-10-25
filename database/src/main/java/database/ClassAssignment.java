@@ -42,18 +42,18 @@ public class ClassAssignment {
 
 		orderDao.save(order);
 	}
-	
+
 	public void queryOrder() {
 		Order o = orderDao.findById(10100);
-		
+
 		Customer c = o.getCustomer();
-		
+
 		System.out.println("Order #" + o.getId() + " was made by " + c.getCustomerName() + " on " + o.getOrderDate());
-		
+
 		List<Order> orders = c.getOrders();
-		
+
 		System.out.println("Order made by " + c.getCustomerName());
-		for(Order order: orders) {
+		for (Order order : orders) {
 			System.out.println("Order #" + order.getId());
 		}
 	}
@@ -67,7 +67,7 @@ public class ClassAssignment {
 		ClassAssignment ca = new ClassAssignment();
 
 //		ca.queryCustomer(customerID);
-		
+
 		ca.queryOrder();
 	}
 }

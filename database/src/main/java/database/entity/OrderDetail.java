@@ -2,9 +2,12 @@ package database.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +18,14 @@ public class OrderDetail {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "order_id")
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "order_id", nullable = false)
+	private Order order;
+
+	@Column(name = "order_id", insertable = false, updatable = false)
 	private Integer orderId;
 
-	@Column(name = "product_id")
+	@Column(name = "product_id", insertable = false, updatable = false)
 	private Integer productId;
 
 	@Column(name = "quantity_ordered")
@@ -76,6 +83,14 @@ public class OrderDetail {
 
 	public void setOrderLineNumber(Short orderLineNumber) {
 		this.orderLineNumber = orderLineNumber;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }
