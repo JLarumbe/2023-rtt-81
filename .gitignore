@@ -25,3 +25,4 @@ replay_pid*
 /.metadata/
 
 database/target/
+junit_example/target/
