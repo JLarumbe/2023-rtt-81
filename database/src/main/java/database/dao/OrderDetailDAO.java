@@ -14,9 +14,9 @@ public class OrderDetailDAO {
 	public OrderDetail findById(int id) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
-		
+
 		String hql = "FROM OrderDetail od WHERE od.id = :id";
-		
+
 		TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
 		query.setParameter("id", id);
 
@@ -26,6 +26,25 @@ public class OrderDetailDAO {
 		} catch (NoResultException nre) {
 			return null;
 		}
+	}
+
+	public OrderDetail findByOrderIdAndProductId(Integer orderId, Integer productId) {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+
+		String hql = "FROM OrderDetail od WHERE od.order.id = :orderId AND od.product.id = :productId";
+
+		TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
+		query.setParameter("orderId", orderId);
+		query.setParameter("productId", productId);
+
+		try {
+			OrderDetail result = query.getSingleResult();
+			return result;
+		} catch (NoResultException nre) {
+			return null;
+		}
+
 	}
 
 	public void save(OrderDetail save) {

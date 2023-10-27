@@ -23,7 +23,7 @@ public class CreateOrderDetailsExample {
 
 		if (products.size() == 0) {
 			System.out.println("Invalid product name!");
-			System.exit(0);
+			System.exit(1);
 		}
 
 		System.out.println("Product ID	Product Name");
@@ -38,7 +38,7 @@ public class CreateOrderDetailsExample {
 
 		if (p == null) {
 			System.out.println("Invalid product ID!");
-			System.exit(0);
+			System.exit(1);
 		}
 
 		System.out.print("Select order ID: ");
@@ -48,23 +48,25 @@ public class CreateOrderDetailsExample {
 
 		if (o == null) {
 			System.out.println("Invalid order number!");
-			System.exit(0);
+			System.exit(1);
 		}
 
-		for (OrderDetail orderDetail : o.getOrderDetail()) {
-			if (orderDetail.getProduct().getId() == productId) {
-				System.out.println(
-						"The product " + p.getProductName() + " is already part of the order. can not add again");
-				System.exit(0);
-			}
-		}
+		OrderDetail od = orderDetailDao.findByOrderIdAndProductId(orderId, productId);
 
-		OrderDetail od = new OrderDetail();
-		od.setProduct(p);
-		od.setOrder(o);
-		od.setOrderLineNumber((short) 345);
-		od.setPriceEach(534.353);
-		od.setQuantityOrdered(33);
+		if (od != null) {
+			System.out.print(od.getQuantityOrdered() + " " + p.getProductName()
+					+ "(s) are already part of the order! How many would you like to add? ");
+			Integer quantityAdded = sc.nextInt();
+			od.setQuantityOrdered(od.getQuantityOrdered() + quantityAdded);
+
+		} else {
+			od = new OrderDetail();
+			od.setProduct(p);
+			od.setOrder(o);
+			od.setOrderLineNumber((short) 123);
+			od.setPriceEach(354.68);
+			od.setQuantityOrdered(21);
+		}
 
 		orderDetailDao.save(od);
 	}

@@ -18,11 +18,11 @@ public class OrderDetail {
 	@Column(name = "id")
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "order_id", nullable = false)
 	private Order order;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
 
