@@ -9,7 +9,7 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">avelardo</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name="hibernate.show_sql">false </property>
+		<property name="hibernate.show_sql">true </property>
 		<property name="hibernate.format_sql">true </property>
 		<mapping class="database.entity.Customer" />
 		<mapping class="database.entity.Product" />
