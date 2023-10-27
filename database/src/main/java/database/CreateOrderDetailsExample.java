@@ -62,9 +62,9 @@ public class CreateOrderDetailsExample {
 		OrderDetail od = new OrderDetail();
 		od.setProduct(p);
 		od.setOrder(o);
-		od.setOrderLineNumber((short) 200);
-		od.setPriceEach(5.55);
-		od.setQuantityOrdered(300);
+		od.setOrderLineNumber((short) 345);
+		od.setPriceEach(534.353);
+		od.setQuantityOrdered(33);
 
 		orderDetailDao.save(od);
 	}
