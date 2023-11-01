@@ -10,12 +10,12 @@ public class CalculatorTest {
 		Calculator c = new Calculator();
 
 		double expected = 10.0;
-
 		double actual = c.add(5.0, 5.0);
 
 		Assertions.assertEquals(expected, actual);
 
 		Assertions.assertEquals(15.0, c.add(7.5, 7.5));
+
 	}
 
 	@Test
@@ -23,12 +23,12 @@ public class CalculatorTest {
 		Calculator c = new Calculator();
 
 		double expected = 0.0;
-
 		double actual = c.subtract(5.0, 5.0);
 
 		Assertions.assertEquals(expected, actual);
 
 		Assertions.assertEquals(15.0, c.subtract(20.0, 5.0));
+
 	}
 
 }

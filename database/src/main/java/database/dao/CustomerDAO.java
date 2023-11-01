@@ -16,9 +16,9 @@ public class CustomerDAO {
 	public Customer findById(int id) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
-		
+
 		String hql = "FROM Customer c WHERE c.id = :id";
-		
+
 		TypedQuery<Customer> query = session.createQuery(hql, Customer.class);
 		query.setParameter("id", id);
 
