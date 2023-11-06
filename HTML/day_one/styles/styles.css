@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: burlywood;
+}
+
+h1 {
+  color: white;
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+  border: solid red 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
