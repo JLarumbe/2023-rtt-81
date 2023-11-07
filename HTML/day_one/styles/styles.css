@@ -1,11 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-
-  background-color: burlywood;
 }
 
-h1 {
+.main-header {
   color: white;
   background-color: aqua;
   width: 200px;

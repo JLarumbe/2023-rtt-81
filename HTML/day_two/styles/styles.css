@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-main {
+  display: flex;
+  width: 200px;
+  padding: 5px;
+  flex-direction: column;
+  border: solid black 1px;
+}
+
+.register-main {
+  display: flex;
+  width: 270px;
+  padding: 5px;
+  flex-direction: column;
+  border: solid black 1px;
+}
+
+#one {
+  background-color: blue;
+  height: 200px;
+  width: 200px;
+  position: static;
+}
+
+#two {
+  background-color: red;
+  height: 200px;
+  width: 200px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+}
+
+#three {
+  background-color: green;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+#four {
+  background-color: tan;
+  height: 200px;
+  width: 200px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+#five {
+  background-color: purple;
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
