@@ -10,7 +10,7 @@
     <h1>Create Customer</h1>
     <section>
         <div class="container">
-            <form>
+            <form method="get" action="/customer/createSubmit">
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="firstNameHelp">
