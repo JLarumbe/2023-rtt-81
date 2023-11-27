@@ -20,7 +20,7 @@
         align-items: center;
         border-radius: 10px;
         width: 300px;
-        height: 300px;
+        height: 350px;
         gap: 5px;
         border: 1px solid #e8ebee;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -46,7 +46,7 @@
       }
 
       .input-field {
-        width: 200px;
+        width: 250px;
         height: 25px;
         border-radius: 5px;
         border: 1px solid darkgray;
@@ -76,8 +76,17 @@
         <label for="password" class="input-label">Password </label>
         <input type="password" name="password" class="input-field" />
       </div>
-      <input type="submit" value="Login" class="submit-button" />
-      <a href="../pages/sign-up.html">Create Account</a>
+      <div class="forms">
+        <label for="confirm-password" class="input-label"
+          >Confirm Password
+        </label>
+        <input type="password" name="confirm-password" class="input-field" />
+      </div>
+      <div class="forms">
+        <label for="user-name" class="input-label">User Name </label>
+        <input type="password" name="user-name" class="input-field" />
+      </div>
+      <input type="submit" value="Sign Up" class="submit-button" />
     </main>
   </body>
 </html>

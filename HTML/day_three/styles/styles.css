@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #141414;
+}
+main {
+  background-color: #282828;
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  padding: 20px;
+}
+#box1 {
+  width: 500px;
+  flex-grow: 2;
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+
+#box2 {
+  width: 300px;
+  flex-grow: 2;
+  padding: 20px;
+}
+
+#box3 {
+  flex-grow: 3;
+  padding: 20px;
+}
+
+section{
+    width: 200px;
+    height: 200px;
+    outline: solid red 1px;
+}
