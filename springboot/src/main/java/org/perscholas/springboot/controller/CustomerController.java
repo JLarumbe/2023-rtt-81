@@ -7,6 +7,7 @@ import org.perscholas.springboot.formbean.CreateCustomerFormBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +26,7 @@ public class CustomerController {
         log.debug("In the customer search controller method : search parameter = " + firstName + " " + lastName);
 
         if (firstName != null && lastName != null) {
-            List<Customer> customers = customerDao.findByFirstNameAndLastName(firstName, lastName);
+            List<Customer> customers = customerDao.findByFirstNameOrLastName(firstName, lastName);
 
             response.addObject("customers", customers);
             response.addObject("firstName", firstName);
@@ -44,6 +45,29 @@ public class CustomerController {
         ModelAndView response = new ModelAndView("customer/create");
 
         log.debug("In create customer with no args");
+
+        return response;
+    }
+
+    @GetMapping("/customer/edit/{id}")
+    public ModelAndView editCustomer(@PathVariable int id) {
+        ModelAndView response = new ModelAndView("customer/create");
+
+        Customer customer = customerDao.findById(id);
+
+        CreateCustomerFormBean form = new CreateCustomerFormBean();
+
+        if (customer != null) {
+            form.setId(customer.getId());
+            form.setFirstName(customer.getFirstName());
+            form.setLastName(customer.getLastName());
+            form.setCity(customer.getCity());
+            form.setPhone(customer.getPhone());
+        } else {
+            log.warn("Customer with id " + id + " was not be found!");
+        }
+
+        response.addObject("form", form);
 
         return response;
     }
