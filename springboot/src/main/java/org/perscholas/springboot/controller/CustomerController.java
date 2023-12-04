@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.CustomerDAO;
 import org.perscholas.springboot.database.entity.Customer;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
+import org.perscholas.springboot.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,8 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private CustomerDAO customerDao;
+    @Autowired
+    private CustomerService customerService;
 
     @GetMapping("/customer/search")
     public ModelAndView search(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
@@ -50,7 +53,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/edit/{id}")
-    public ModelAndView editCustomer(@PathVariable int id) {
+    public ModelAndView editCustomer(@PathVariable Integer id) {
         ModelAndView response = new ModelAndView("customer/create");
 
         Customer customer = customerDao.findById(id);
@@ -76,19 +79,7 @@ public class CustomerController {
     public ModelAndView createCustomerSubmit(CreateCustomerFormBean form) {
         ModelAndView response = new ModelAndView("customer/create");
 
-        System.out.println("firstName: " + form.getFirstName());
-        System.out.println("lastName: " + form.getLastName());
-        System.out.println("phone: " + form.getPhone());
-        System.out.println("city: " + form.getCity());
-
-        Customer customer = new Customer();
-        customer.setFirstName(form.getFirstName());
-        customer.setLastName(form.getLastName());
-        customer.setPhone(form.getPhone());
-        customer.setCity(form.getCity());
-
-        customerDao.save(customer);
-        log.debug("In create customer with incoming args");
+        customerService.createCustomer(form);
 
         return response;
     }
