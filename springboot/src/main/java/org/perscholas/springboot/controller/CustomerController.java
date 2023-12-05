@@ -96,10 +96,7 @@ public class CustomerController {
         log.info("######################### In create customer submit - no error found #########################");
 
         Customer c = customerService.createCustomer(form);
-
-        ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:/customer/edit/" + c.getId() + "?success=Customer Saved Successfully");
-
+        ModelAndView response = new ModelAndView("customer/create");
         return response;
     }
 }
