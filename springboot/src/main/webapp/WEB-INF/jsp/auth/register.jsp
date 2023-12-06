@@ -3,7 +3,15 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<h1>User Registration</h1>
+<section>
+    <div class="bg-light2 pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="m-0">User Registration</h1>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section>
     <div class="container">

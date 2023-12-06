@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-    <title>Class Example Project</title>
-</head>
+<jsp:include page="./include/header.jsp"/>
 
-<body>
-<h1>Index Page</h1>
-<p>Here is a paragraph</p>
-</body>
-</html>
+<section>
+    <div class="bg-light2 pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="m-0">Index</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<jsp:include page="./include/footer.jsp"/>
