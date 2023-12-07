@@ -4,13 +4,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.UserDAO;
 import org.perscholas.springboot.database.dao.UserRoleDAO;
 import org.perscholas.springboot.database.entity.User;
+import org.perscholas.springboot.database.entity.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRoleDAO userRoleDao;
 
-    public static Collection<?> extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
+    public static Collection<? extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         for (UserRole role : userRoles) {
@@ -39,10 +42,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.debug("User login attempt with username: " + username);
+
+        // lookup the incoming username in the database
         User user = userDao.findByEmailIgnoreCase(username);
 
+        // if we did not find the user in the database then we throw an exception because the user is not valid
         if (user == null) {
-            throw new UsernameNotFoundException(username + " not found");
+            throw new UsernameNotFoundException("Username '" + username + "' not found in database");
         }
 
         boolean accountIsEnabled = true;
@@ -54,7 +61,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // setup user roles
         Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
-
+        
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), accountIsEnabled,
                 accountNonExpired, credentialsNonExpired, accountNonLocked, springRoles);
     }

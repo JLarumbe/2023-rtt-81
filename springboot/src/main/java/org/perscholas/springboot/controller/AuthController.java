@@ -53,7 +53,10 @@ public class AuthController {
         log.info("######################### In register submit - no error found #########################");
 
         User u = userService.createUser(form);
-        ModelAndView response = new ModelAndView("auth/register");
+
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/");
+
         return response;
     }
 }
