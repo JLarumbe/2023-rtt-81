@@ -55,6 +55,10 @@
                     </li>
                 </sec:authorize>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/index">Secured Request</a>
+                </li>
+
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/logout">Logout</a>
