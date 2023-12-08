@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
 
-    <link href="/pub/css/global-style.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -41,7 +43,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/register">User Registration</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">User Login</a>
+                </li>
+                <sec:authorize access="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Admin</a>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
