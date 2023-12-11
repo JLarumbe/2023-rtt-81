@@ -3,13 +3,17 @@ package org.perscholas.springboot.service;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.CustomerDAO;
 import org.perscholas.springboot.database.entity.Customer;
+import org.perscholas.springboot.database.entity.User;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
+import org.perscholas.springboot.security.AuthenticatedUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class CustomerService {
+    @Autowired
+    AuthenticatedUserService authenticatedUserService;
     @Autowired
     private CustomerDAO customerDao;
 
@@ -24,6 +28,9 @@ public class CustomerService {
 
         if (customer == null) {
             customer = new Customer();
+
+            User user = authenticatedUserService.loadCurrentUser();
+            customer.setUserId(user.getId());
         }
 
         customer.setFirstName(form.getFirstName());
@@ -35,4 +42,6 @@ public class CustomerService {
 
         return customerDao.save(customer);
     }
+
+
 }
