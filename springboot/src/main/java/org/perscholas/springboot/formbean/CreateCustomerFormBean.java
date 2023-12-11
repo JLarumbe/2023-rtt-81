@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 public class CreateCustomerFormBean {
     private Integer id;
-    
+
     @NotEmpty(message = "First name is required")
     @Length(max = 45, message = "First name must less than 45 characters")
     private String firstName;
@@ -24,4 +24,6 @@ public class CreateCustomerFormBean {
     @NotEmpty(message = "City is required")
     @Length(max = 45, message = "City must be less than 45 characters")
     private String city;
+
+    private String imageUrl;
 }
