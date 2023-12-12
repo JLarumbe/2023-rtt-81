@@ -117,5 +117,23 @@ public class CustomerController {
         }
     }
 
-    
+    @GetMapping("/customer/details")
+    public ModelAndView details(@RequestParam Integer id) {
+        ModelAndView response = new ModelAndView("customer/details");
+
+        Customer customer = customerDao.findById(id);
+
+        log.debug("In the customer details controller method : id = " + id);
+
+        if (customer != null) {
+            log.debug("Customer : " + customer.getId() + " " + customer.getFirstName() + " " + customer.getLastName());
+            response.addObject("customer", customer);
+        } else {
+            log.warn("Customer with id " + id + " was not be found!");
+        }
+
+        return response;
+    }
+
+
 }
